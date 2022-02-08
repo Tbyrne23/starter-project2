@@ -1,25 +1,38 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+
 import './App.css';
 
-function App() {
+
+const App = () => {
+  const [agree, setAgree] = useState(false);
+
+  const checkboxHandler = () => {
+    // if agree === true, it will be set to false
+    // if agree === false, it will be set to true
+    setAgree(!agree);
+    // Don't miss the exclamation mark
+  }
+
+  // When the button is clicked
+  const btnHandler = () => {
+    alert('Fool!');
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <div>
+          <input type="checkbox" id="agree" onChange={checkboxHandler} />
+          <label htmlFor="agree"> I agree to <b>terms and conditions</b></label>
+        </div>
+
+        {/* Don't miss the exclamation mark* */}
+        <button enabled={!agree} className="btn" onClick={btnHandler}>
+          Continue
+        </button>
+      </div>
     </div>
   );
-}
+};
 
-export default App;
+export default App
